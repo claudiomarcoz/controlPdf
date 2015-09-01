@@ -1,7 +1,7 @@
 #!/bin/bash
 
 scriptPath="${PATH_A}/scripts/"
-arq_path=${PATH_A}/$1
+arq_path=$1
 apend='/ProcSet \[/PDF'
 texto='/Text'
 image='/Image'

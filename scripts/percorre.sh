@@ -2,10 +2,10 @@
 
 cache="${PATH_A}/preCache/*"
 dir="preCache"
-arq_trata=("${PATH_A}/preCache/.emtratamento" "${PATH_A}/preCache/.emcache")
+arq_trata=("${PATH_A}/controle/.emtratamento" "${PATH_A}/controle/.emcache")
 log_geral="${PATH_A}/controle/.config"
 scriptPath="${PATH_A}/scripts/""tamanhoGeral.sh"
-dirTrata="${PATH_A}/trataImagem/"
+
 dircache="${PATH_A}/cache/"
 flag_feito=False
 
@@ -31,14 +31,23 @@ do
 
 if [ "$( $scriptPath ${dir}/$( echo $folha | grep -o '[^/]\+_''[0-9]\+[.]pdf' ) )" -ge $limite ] ; 
 	then
-		echo $dirTrata"$(echo "${folha}" | rev |  cut -d"/" -f1 | rev )" >> ${arq_trata[0]}
-		mv ${folha} $dirTrata
-		echo "tratamento: ""$(echo "${folha}" | rev |  cut -d"/" -f1 | rev )" >> ${log_geral}
+		direcionador=$("${PATH_A}/scripts/""direcionaTratamento.sh" "${folha}" "${log_geral}")
+		if [ $direcionador == False ]; then
+			echo False;
+			exit 1
+		else
+			echo "$direcionador" >> ${arq_trata[0]}
+		fi
+		
 		
 else
 		mv ${folha} $dircache
 		echo $dircache"$(echo "${folha}" | rev |  cut -d"/" -f1 | rev )"  >> ${arq_trata[1]}
-		echo "juncao: ""$(echo "${folha}" | rev |  cut -d"/" -f1 | rev )" >> ${log_geral}		
+		if [ "$( "${PATH_A}/scripts/""verificaTexto.sh" "${dircache}$(echo "${folha}" | rev |  cut -d"/" -f1 | rev )" )" == "False True" ]; then
+			echo "juncao:imagem:""$(echo "${folha}" | rev |  cut -d"/" -f1 | rev )" >> ${log_geral}	
+		else
+			echo "juncao:texto:""$(echo "${folha}" | rev |  cut -d"/" -f1 | rev )" >> ${log_geral}	
+		fi
 fi
 done;
 
