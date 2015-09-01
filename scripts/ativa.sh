@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source scripts/carrega.sh "parsear"
 scriptPath="${PATH_A}/scripts/"
 nop=$("${scriptPath}contarPaginas.sh" $arquivo)
 prefixos="folha"
