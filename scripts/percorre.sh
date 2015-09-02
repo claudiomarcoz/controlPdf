@@ -3,13 +3,13 @@
 cache="${PATH_A}/preCache/*"
 dir="preCache"
 arq_trata=("${PATH_A}/controle/.emtratamento" "${PATH_A}/controle/.emcache")
-log_geral="${PATH_A}/controle/.config"
+log_geral=$2
 scriptPath="${PATH_A}/scripts/""tamanhoGeral.sh"
 
 dircache="${PATH_A}/cache/"
 flag_feito=False
 
-limite=191
+limite=$1
 
 if [ -f "$log_geral" ]; then
 	rm $log_geral

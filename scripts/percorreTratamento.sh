@@ -5,8 +5,8 @@ log_geral=$2
 dirTrataImg="${PATH_A}/trataImagem/"
 dirTrataTxt="${PATH_A}/trataTexto/"
 percorre=$3
-trataTexto="${PATH_A}/scripts/"trataTexto.js
-trataImagem="${PATH_A}/scripts/"trataImagem.js
+trataTexto="${PATH_A}/scripts/"trataTexto.sh
+trataImagem="${PATH_A}/scripts/"trataImagem.sh
 distintivo=""
 
 cat "$percorre" | while read $item; 
