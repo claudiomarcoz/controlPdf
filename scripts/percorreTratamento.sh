@@ -17,9 +17,9 @@ do
 	  IFS=' ';
 	  read tratamento tipo arquivo<<<$(grep -e $distintivo $log_geral | tr ':' ' ');
 	  if [ $tipo == "imagem" ] && [ $arquivo == $distintivo ]; then
-	  	echo $($trataImagem $item $limite)
+	  	echo $($trataImagem $item ${trataImagem} $limite)
 	  elif [ $tipo == "texto" ] && [ $arquivo == $distintivo ]; then
-	  	echo $($trataTexto $item $limite)
+	  	echo $($trataTexto $item ${dirTrataTxt} $limite)
 	  else
 	  	echo False
 	  	exit 1

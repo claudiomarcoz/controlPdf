@@ -4,7 +4,7 @@ source scripts/carrega.sh "parsear"
 scriptPath="${PATH_A}/scripts/"
 nop=$("${scriptPath}contarPaginas.sh" $arquivo)
 prefixos="folha"
-limite=191
+limite=19
 log_geral="${PATH_A}/controle/.config"
 arq_trata=("${PATH_A}/controle/.emtratamento" "${PATH_A}/controle/.emcache") # arq_trata esta duplicado no percorre pois é array
 

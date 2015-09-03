@@ -34,7 +34,7 @@ contador=$(( $contador + 1 ))
 done
 return ${arquiDest}
 }
-
+echo "lucinha lins"
 while [ $flag_converte == False ] || [ "$flag_converte" == "" ]; do
 if [ $contador -gt 5 ]; then
 	echo False;
@@ -51,9 +51,10 @@ tamFatia="$($contaTamanho $fatia)"
 	if [ $tamFatia -gt $tolerancia ] && [ $tolerancia -gt 10 ]; then
 		fator=$(( $fator - $(( $i * 10 )) ))		
 	else
-	mv $parseravel "${PATH_A}/cache/"
-	echo True;
-	exit 0;
+		mv $fatia "${PATH_A}/cache/"
+		echo "tratado:texto:"$parseravel >> "${PATH_A}/controle/.conserto"
+		echo True;
+		exit 0;
 	fi
 
 

@@ -3,7 +3,7 @@
 scriptPath="${PATH_A}/scripts/"
 if [ -f $1 ]; 
 then 
-	arq_path = $1
+	arq_path=$1
 else
 	arq_path=${PATH_A}/$1
 fi
