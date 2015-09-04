@@ -8,16 +8,15 @@ percorre=$3
 trataTexto="${PATH_A}/scripts/"trataTexto.sh
 trataImagem="${PATH_A}/scripts/"trataImagem.sh
 distintivo=""
-
-cat "$percorre" | while read $item; 
+cat "$percorre" | while read item
 do
 	tipo=""
 	arquivo=""
 	distintivo="$(echo "${item}" | rev |  cut -d"/" -f1 | rev )"
 	  IFS=' ';
-	  read tratamento tipo arquivo<<<$(grep -e $distintivo $log_geral | tr ':' ' ');
+	  read tratamento tipo arquivo<<<$(grep -e $distintivo $log_geral | tr ':' ' ');	  
 	  if [ $tipo == "imagem" ] && [ $arquivo == $distintivo ]; then
-	  	echo $($trataImagem $item ${trataImagem} $limite)
+	  	echo $($trataImagem $item ${dirTrataImg} $limite)
 	  elif [ $tipo == "texto" ] && [ $arquivo == $distintivo ]; then
 	  	echo $($trataTexto $item ${dirTrataTxt} $limite)
 	  else
